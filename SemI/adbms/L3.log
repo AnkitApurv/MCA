@@ -1,0 +1,479 @@
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                       NOT NULL VARCHAR2(3)
+ DNAME                                              VARCHAR2(10)
+ LOCATION                                           VARCHAR2(9)
+
+SQL> desc proj;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                       NOT NULL VARCHAR2(3)
+ PRJ_NO                                    NOT NULL VARCHAR2(5)
+ PRJ_NAME                                           VARCHAR2(10)
+ PRJ_CREDITS                                        NUMBER(2)
+ STRT_DATE                                          DATE
+ END_DATE                                           DATE
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ MGR_ID                                             NUMBER(4)
+ DATE_BIRTH                                         DATE
+ SAL                                                NUMBER(7,2)
+ COMM                                               NUMBER(7,2)
+ DEPT_NO                                            VARCHAR2(3)
+ DATE_OF_JOIN                                       DATE
+ PRJ_ID                                             VARCHAR2(5)
+
+SQL> commit;
+
+Commit complete.
+
+SQL> INSERT INTO dept VALUES ('D1', 'Marketing', 'CHN');
+
+1 row created.
+
+SQL> INSERT INTO dept VALUES ('D2', 'Research', 'MNG');
+
+1 row created.
+
+SQL> INSERT INTO dept VALUES ('D3', 'Administrator', 'BNG');
+INSERT INTO dept VALUES ('D3', 'Administrator', 'BNG')
+                               *
+ERROR at line 1:
+ORA-12899: value too large for column "MCA9042"."DEPT"."DNAME" (actual: 13, 
+maximum: 10) 
+
+
+SQL> INSERT INTO dept VALUES ('D4', 'HR', 'BGG');
+INSERT INTO dept VALUES ('D4', 'HR', 'BGG')
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA9042.LOCATION) violated 
+
+
+SQL> INSERT INTO dept VALUES ('D5', 'IT', 'BNG');
+
+1 row created.
+
+SQL> INSERT INTO dept VALUES (null, 'Corporate', 'HYD');
+INSERT INTO dept VALUES (null, 'Corporate', 'HYD')
+                         *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("MCA9042"."DEPT"."DNO") 
+
+
+SQL> INSERT INTO dept VALUES ('D3', 'Admin', 'BNG');
+
+1 row created.
+
+SQL> INSERT INTO dept VALUES ('D4', 'HR', 'BNG');
+
+1 row created.
+
+SQL> INSERT INTO proj VALUES ('D1', 'P1', 'ab', 2, TO_DATE('10-10-2006','DD-MM-YYYY'), TO_DATE('10-10-2007','DD-MM-YYYY'));
+
+1 row created.
+
+SQL> INSERT INTO proj VALUES ('D2', 'P1', 'cd', 2, TO_DATE('01-10-2007','DD-MM-YYYY'), TO_DATE('10-10-2007','DD-MM-YYYY'));
+
+1 row created.
+
+SQL> INSERT INTO proj VALUES ('D3', 'P2', 'ef', 7, TO_DATE('10-10-2007','DD-MM-YYYY'), TO_DATE('10-10-2017','DD-MM-YYYY'));
+
+1 row created.
+
+SQL> INSERT INTO proj VALUES ('D1', 'P3', 'gh', 5, TO_DATE('10-01-2007','DD-MM-YYYY'), TO_DATE('10-10-2007','DD-MM-YYYY'));
+
+1 row created.
+
+SQL> INSERT INTO proj VALUES ('D4', 'P2', 'ij', 7, TO_DATE('10-10-2017','DD-MM-YYYY'), TO_DATE('10-10-2018','DD-MM-YYYY'));
+
+1 row created.
+
+SQL> INSERT INTO proj VALUES ('D3', 'P2', 'kl', 2);
+INSERT INTO proj VALUES ('D3', 'P2', 'kl', 2)
+            *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> INSERT INTO proj VALUES ('D2', 'P3', 'mn', 2);
+INSERT INTO proj VALUES ('D2', 'P3', 'mn', 2)
+            *
+ERROR at line 1:
+ORA-00947: not enough values 
+
+
+SQL> INSERT INTO emp VALUES (100, 'Ravi', 'MGR', 111, TO_DATE('10-10-1985','DD-MM-YYYY'), 32000, 16000, 'D1', 'P1', TO_DATE('02-10-2001','DD-MM-YYYY'));
+INSERT INTO emp VALUES (100, 'Ravi', 'MGR', 111, TO_DATE('10-10-1985','DD-MM-YYYY'), 32000, 16000, 'D1', 'P1', TO_DATE('02-10-2001','DD-MM-YYYY'))
+                                                                                                         *
+ERROR at line 1:
+ORA-01858: a non-numeric character was found where a numeric was expected 
+
+
+SQL> INSERT INTO emp VALUES (100, 'Ravi', 'MGR', 111, TO_DATE('10-10-1985','DD-MM-YYYY'), 32000, 16000, 'D1', TO_DATE('02-10-2001','DD-MM-YYYY'), 'P1');
+INSERT INTO emp VALUES (100, 'Ravi', 'MGR', 111, TO_DATE('10-10-1985','DD-MM-YYYY'), 32000, 16000, 'D1', TO_DATE('02-10-2001','DD-MM-YYYY'), 'P1')
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA9042.EMPNO_LESS_THEN_100) violated 
+
+
+SQL> INSERT INTO emp VALUES (null, 'Vishal', 'CLRK', 106, TO_DATE('10-12-1980','DD-MM-YYYY'), 18000, 16000, 'D1', TO_DATE('02-10-1980','DD-MM-YYYY'), 'P1');
+INSERT INTO emp VALUES (null, 'Vishal', 'CLRK', 106, TO_DATE('10-12-1980','DD-MM-YYYY'), 18000, 16000, 'D1', TO_DATE('02-10-1980','DD-MM-YYYY'), 'P1')
+                        *
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("MCA9042"."EMP"."EMPNO") 
+
+
+SQL> INSERT INTO emp VALUES (01, 'Ravi', 'MGR', 11, TO_DATE('10-10-1985','DD-MM-YYYY'), 32000, 16000, 'D1', TO_DATE('02-10-2001','DD-MM-YYYY'), 'P1');
+INSERT INTO emp VALUES (01, 'Ravi', 'MGR', 11, TO_DATE('10-10-1985','DD-MM-YYYY'), 32000, 16000, 'D1', TO_DATE('02-10-2001','DD-MM-YYYY'), 'P1')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA9042.SYS_C0032805) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO emp VALUES (150, 'Aman', 'CEO', null, TO_DATE('10-12-1970','DD-MM-YYYY'), 60000, 30000, null, null, TO_DATE('03-12-1990','DD-MM-YYYY'));
+INSERT INTO emp VALUES (150, 'Aman', 'CEO', null, TO_DATE('10-12-1970','DD-MM-YYYY'), 60000, 30000, null, null, TO_DATE('03-12-1990','DD-MM-YYYY'))
+                                                                                                                *
+ERROR at line 1:
+ORA-12899: value too large for column "MCA9042"."EMP"."PRJ_ID" (actual: 9, 
+maximum: 5) 
+
+
+SQL> INSERT INTO emp VALUES (50, 'Aman', 'CEO', null, TO_DATE('10-12-1970','DD-MM-YYYY'), 60000, 30000, null, null, TO_DATE('03-12-1990','DD-MM-YYYY'));
+INSERT INTO emp VALUES (50, 'Aman', 'CEO', null, TO_DATE('10-12-1970','DD-MM-YYYY'), 60000, 30000, null, null, TO_DATE('03-12-1990','DD-MM-YYYY'))
+                                                                                                               *
+ERROR at line 1:
+ORA-12899: value too large for column "MCA9042"."EMP"."PRJ_ID" (actual: 9, 
+maximum: 5) 
+
+
+SQL> INSERT INTO emp VALUES (50, 'Aman', 'CEO', null, TO_DATE('10-12-1970','DD-MM-YYYY'), 60000, 30000, null, TO_DATE('03-12-1990','DD-MM-YYYY'), null);
+
+1 row created.
+
+SQL> INSERT INTO emp VALUES (11, 'Raghu', 'GM', 50, TO_DATE('10-12-1974','DD-MM-YYYY'), 45000, 15000, null, TO_DATE('03-11-1985','DD-MM-YYYY'), null);
+
+1 row created.
+
+SQL> INSERT INTO emp VALUES (01, 'Ravi', 'MGR', 11, TO_DATE('10-10-1985','DD-MM-YYYY'), 32000, 16000, 'D1', TO_DATE('02-10-2001','DD-MM-YYYY'), 'P1');
+
+1 row created.
+
+SQL> INSERT INTO emp VALUES (04, 'Vishal', 'CLERK', 01, TO_DATE('02-10-1980','DD-MM-YYYY'), 20000, 16000, 'D2', TO_DATE('02-10-2005','DD-MM-YYYY'), 'P1');
+INSERT INTO emp VALUES (04, 'Vishal', 'CLERK', 01, TO_DATE('02-10-1980','DD-MM-YYYY'), 20000, 16000, 'D2', TO_DATE('02-10-2005','DD-MM-YYYY'), 'P1')
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA9042.SALARY_CEILING) violated 
+
+
+SQL> INSERT INTO emp VALUES (04, 'Vishal', 'CLERK', 01, TO_DATE('02-10-1980','DD-MM-YYYY'), 25000, 16000, 'D2', TO_DATE('02-10-2005','DD-MM-YYYY'), 'P1');
+INSERT INTO emp VALUES (04, 'Vishal', 'CLERK', 01, TO_DATE('02-10-1980','DD-MM-YYYY'), 25000, 16000, 'D2', TO_DATE('02-10-2005','DD-MM-YYYY'), 'P1')
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA9042.JOB_TITLE) violated 
+
+
+SQL> INSERT INTO emp VALUES (25, 'Manu', 'A.MGR', 50, TO_DATE('10-12-1980','DD-MM-YYYY'), 40000, 16000, 'D4', TO_DATE('02-10-2002','DD-MM-YYYY'), 'P2');
+
+1 row created.
+
+SQL> INSERT INTO emp VALUES (03, 'Vishal', 'A.CLRK', 11, TO_DATE('10-12-1980','DD-MM-YYYY'), 21000, 16000, 'D1', TO_DATE('02-10-2001','DD-MM-YYYY'), 'P1');
+INSERT INTO emp VALUES (03, 'Vishal', 'A.CLRK', 11, TO_DATE('10-12-1980','DD-MM-YYYY'), 21000, 16000, 'D1', TO_DATE('02-10-2001','DD-MM-YYYY'), 'P1')
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA9042.JOB_TITLE) violated 
+
+
+SQL> INSERT INTO emp VALUES (02, 'Raviraj', 'CLRK', 01, TO_DATE('10-12-1980','DD-MM-YYYY'), 24000, 12000, 'D1', TO_DATE('12-11-2000','DD-MM-YYYY'), 'P3');
+
+1 row created.
+
+SQL> INSERT INTO emp VALUES (03, 'Vishal', 'CLRK', 11, TO_DATE('02-10-1980','DD-MM-YYYY'), 20000, 16000, 'D1', TO_DATE('02-10-2002','DD-MM-YYYY'), 'P3');
+INSERT INTO emp VALUES (03, 'Vishal', 'CLRK', 11, TO_DATE('02-10-1980','DD-MM-YYYY'), 20000, 16000, 'D1', TO_DATE('02-10-2002','DD-MM-YYYY'), 'P3')
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA9042.SALARY_CEILING) violated 
+
+
+SQL> INSERT INTO emp VALUES (06, 'Vishal', 'MGR', 01, TO_DATE('02-10-1986','DD-MM-YYYY'), 21000, 16000, 'D2', TO_DATE('02-10-1985','DD-MM-YYYY'), 'P3');
+INSERT INTO emp VALUES (06, 'Vishal', 'MGR', 01, TO_DATE('02-10-1986','DD-MM-YYYY'), 21000, 16000, 'D2', TO_DATE('02-10-1985','DD-MM-YYYY'), 'P3')
+*
+ERROR at line 1:
+ORA-02290: check constraint (MCA9042.LOGICAL_DOB_LESS_THAN_DOJ) violated 
+
+
+SQL> INSERT INTO emp VALUES (23, 'Mahesh', 'CLRK', 06, TO_DATE('10-12-1974','DD-MM-YYYY'), 25000, 16000, 'D3', TO_DATE('02-10-2002','DD-MM-YYYY'), 'P2');
+INSERT INTO emp VALUES (23, 'Mahesh', 'CLRK', 06, TO_DATE('10-12-1974','DD-MM-YYYY'), 25000, 16000, 'D3', TO_DATE('02-10-2002','DD-MM-YYYY'), 'P2')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA9042.SYS_C0032805) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO emp VALUES (08, 'Vishal', 'CLRK', 06, TO_DATE('10-12-1970','DD-MM-YYYY'), 21000, 16000, 'D9', TO_DATE('02-10-1985','DD-MM-YYYY'), 'P1');
+INSERT INTO emp VALUES (08, 'Vishal', 'CLRK', 06, TO_DATE('10-12-1970','DD-MM-YYYY'), 21000, 16000, 'D9', TO_DATE('02-10-1985','DD-MM-YYYY'), 'P1')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA9042.FK_EMP_PROJ) violated - parent key not 
+found 
+
+
+SQL> INSERT INTO emp VALUES (03, 'Vishal', 'CLRK', 11, TO_DATE('10-12-1980','DD-MM-YYYY'), 21000, 16000, 'D1', TO_DATE('02-10-2001','DD-MM-YYYY'), 'P3');
+
+1 row created.
+
+SQL> INSERT INTO emp VALUES (23, 'Mahesh', 'CLRK', 06, TO_DATE('10-12-1974','DD-MM-YYYY'), 25000, 16000, 'D3', TO_DATE('02-10-2002','DD-MM-YYYY'), 'P2');
+INSERT INTO emp VALUES (23, 'Mahesh', 'CLRK', 06, TO_DATE('10-12-1974','DD-MM-YYYY'), 25000, 16000, 'D3', TO_DATE('02-10-2002','DD-MM-YYYY'), 'P2')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA9042.SYS_C0032805) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO emp VALUES (08, 'Vishal', 'CLRK', 06, TO_DATE('10-12-1970','DD-MM-YYYY'), 21000, 16000, 'D9', TO_DATE('02-10-1985','DD-MM-YYYY'), 'P1');
+INSERT INTO emp VALUES (08, 'Vishal', 'CLRK', 06, TO_DATE('10-12-1970','DD-MM-YYYY'), 21000, 16000, 'D9', TO_DATE('02-10-1985','DD-MM-YYYY'), 'P1')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA9042.FK_EMP_PROJ) violated - parent key not 
+found 
+
+
+SQL> INSERT INTO emp VALUES (23, 'Mahesh', 'CLRK', 06, TO_DATE('10-12-1974','DD-MM-YYYY'), 25000, 16000, 'D3', TO_DATE('02-10-2002','DD-MM-YYYY'), 'P2');
+INSERT INTO emp VALUES (23, 'Mahesh', 'CLRK', 06, TO_DATE('10-12-1974','DD-MM-YYYY'), 25000, 16000, 'D3', TO_DATE('02-10-2002','DD-MM-YYYY'), 'P2')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA9042.SYS_C0032805) violated - parent key 
+not found 
+
+
+SQL> INSERT INTO emp VALUES (08, 'Vishal', 'CLRK', 25, TO_DATE('10-12-1970','DD-MM-YYYY'), 21000, 16000, 'D9', TO_DATE('02-10-1985','DD-MM-YYYY'), 'P1');
+INSERT INTO emp VALUES (08, 'Vishal', 'CLRK', 25, TO_DATE('10-12-1970','DD-MM-YYYY'), 21000, 16000, 'D9', TO_DATE('02-10-1985','DD-MM-YYYY'), 'P1')
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA9042.FK_EMP_PROJ) violated - parent key not 
+found 
+
+
+SQL> commit;
+
+Commit complete.
+
+SQL> DELETE FROM emp WHERE prj_id='P2';
+
+1 row deleted.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> DELETE FROM emp WHERE mgr_id=01 AND prj_id='P1';
+
+0 rows deleted.
+
+SQL> DELETE FROM dept WHERE DNAME='Marketing';
+DELETE FROM dept WHERE DNAME='Marketing'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA9042.SYS_C0032670) violated - child record 
+found 
+
+
+SQL> DELETE FROM dept WHERE DNAME='Marketing' CASCADE;
+DELETE FROM dept WHERE DNAME='Marketing' CASCADE
+                                         *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SPOOL OFF
+SQL> DELETE FROM dept WHERE DNAME='Marketing' CASCADE;
+DELETE FROM dept WHERE DNAME='Marketing' CASCADE
+                                         *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT dno FROM dept WHERE dname='Marketing';
+
+DNO                                                                             
+---                                                                             
+D1                                                                              
+
+SQL> commit;
+
+Commit complete.
+
+SQL> DELETE FROM emp WHERE dno='D1';
+DELETE FROM emp WHERE dno='D1'
+                      *
+ERROR at line 1:
+ORA-00904: "DNO": invalid identifier 
+
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ MGR_ID                                             NUMBER(4)
+ DATE_BIRTH                                         DATE
+ SAL                                                NUMBER(7,2)
+ COMM                                               NUMBER(7,2)
+ DEPT_NO                                            VARCHAR2(3)
+ DATE_OF_JOIN                                       DATE
+ PRJ_ID                                             VARCHAR2(5)
+
+SQL> DELETE FROM emp WHERE dept_no='D1';
+
+3 rows deleted.
+
+SQL> DELETE FROM dept WHERE dname='Marketing';
+DELETE FROM dept WHERE dname='Marketing'
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA9042.SYS_C0032670) violated - child record 
+found 
+
+
+SQL> desc proj;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DNO                                       NOT NULL VARCHAR2(3)
+ PRJ_NO                                    NOT NULL VARCHAR2(5)
+ PRJ_NAME                                           VARCHAR2(10)
+ PRJ_CREDITS                                        NUMBER(2)
+ STRT_DATE                                          DATE
+ END_DATE                                           DATE
+
+SQL> DELETE FROM proj WHERE dno='D1';
+
+2 rows deleted.
+
+SQL> DELETE FROM dept WHERE dname='Marketing';
+
+1 row deleted.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> SELECT dno FROM proj WHERE ROWNUM <=1;
+
+DNO                                                                             
+---                                                                             
+D1                                                                              
+
+SQL> UPDATE emp SET dept_no='D5' WHERE dept_no='D1';
+UPDATE emp SET dept_no='D5' WHERE dept_no='D1'
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA9042.FK_EMP_PROJ) violated - parent key not 
+found 
+
+
+SQL> select * from proj;
+
+DNO PRJ_N PRJ_NAME   PRJ_CREDITS STRT_DATE END_DATE                             
+--- ----- ---------- ----------- --------- ---------                            
+D1  P1    ab                   2 10-OCT-06 10-OCT-07                            
+D2  P1    cd                   2 01-OCT-07 10-OCT-07                            
+D3  P2    ef                   7 10-OCT-07 10-OCT-17                            
+D1  P3    gh                   5 10-JAN-07 10-OCT-07                            
+D4  P2    ij                   7 10-OCT-17 10-OCT-18                            
+
+SQL> select * from dept;
+
+DNO DNAME      LOCATION                                                         
+--- ---------- ---------                                                        
+D1  Marketing  CHN                                                              
+D2  Research   MNG                                                              
+D5  IT         BNG                                                              
+D3  Admin      BNG                                                              
+D4  HR         BNG                                                              
+
+SQL> select * from emp;
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        50 Aman       CEO                  10-DEC-70      60000      30000      
+03-DEC-90                                                                       
+                                                                                
+        11 Raghu      GM                50 10-DEC-74      45000      15000      
+03-NOV-85                                                                       
+                                                                                
+         1 Ravi       MGR               11 10-OCT-85      32000      16000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+6 rows selected.
+
+SQL> UPDATE emp SET job='MGR' sal=35000, mgr_id=11 WHERE empno=23;
+UPDATE emp SET job='MGR' sal=35000, mgr_id=11 WHERE empno=23
+                         *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> UPDATE emp SET job='MGR', sal=35000, mgr_id=11 WHERE empno=23;
+
+0 rows updated.
+
+SQL> UPDATE emp SET dept_no='D5' WHERE dept_no='D1';
+UPDATE emp SET dept_no='D5' WHERE dept_no='D1'
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (MCA9042.FK_EMP_PROJ) violated - parent key not 
+found 
+
+
+SQL> UPDATE proj SET dno='D5' WHERE ROWNUM <=1;
+UPDATE proj SET dno='D5' WHERE ROWNUM <=1
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (MCA9042.FK_EMP_PROJ) violated - child record 
+found 
+
+
+SQL> ALTER TABLE emp MODIFY comm DEFAULT 10000 WHERE job='MGR';
+ALTER TABLE emp MODIFY comm DEFAULT 10000 WHERE job='MGR'
+                                          *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> ALTER TABLE emp MODIFY comm DEFAULT 10000 WHERE job='MGR';
+ALTER TABLE emp MODIFY comm DEFAULT 10000 WHERE job='MGR'
+                                          *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option 
+
+
+SQL> UPDATE emp SET comm=10000 WHERE job='MGR';
+
+1 row updated.
+
+SQL> spool off

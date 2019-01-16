@@ -1,0 +1,40 @@
+What is UML?
+"The Unified Modeling Language (UML) is a language for specifying,
+visualizing, constructing, and documenting the artifacts of softwaresystems, as well as for business modeling and other non-software
+systems".— OMG UML Specification <two line spaces after this>
+****
+-
+Why use UML?
+UML has become the de-facto standard for modeling object-oriented
+systems.
+UML is extensible and method-independent.
+UML is not perfect, but it's good enough. ***
+Three OOAD gurus, and their methods, rose to prominence
+1. Grady Booch — The Booch Method
+2. James Rumbaugh, et al. — Object Modeling Technique
+3. Ivar Jacsobson — Objectory
+UML Figure Types
+-
+-
+-
+There are several types of UML diagrams:
+Use-case Figure
+- Shows actors, use-cases, and the relationships between them.
+Class Figure
+Shows relationships between classes and pertinent information about
+classes themselves.
+Object Figure
+- Shows a configuration of objects at an instant in time.
+Interaction Figures
+- Show an interaction between a group of collaborating objects.
+- Two types: Collaboration diagram and sequence diagram
+Package Figure
+- Shows system structure at the library/package level.
+State Figure
+- Describes behavior of instances of a class in terms of states, stimuli, and
+transitions.
+Activity Figure
+Very similar to a flowchart—shows actions and decision points, but with
+the ability to accommodate concurrency.
+Deployment Figure
+Shows configuration of hardware and software in a distributed system.

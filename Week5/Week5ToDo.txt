@@ -1,0 +1,23 @@
+ Here is a list of programming questions that all of you need to code and test. The programs can be written in any programming language of your choice C/C++/Java.  The soft copies of the code is to be submitted on the 7th of January 2019.
+
+Coding Conventions to be used are as follows:
+
+    Every program to have documentation in comment lines in the top mentioning file name, description of the program, author and date
+    Every function should have documentation with description about  the functionality is , input parameters and return value
+    Use meaningful variable names, function names with camel casing
+    Indentation 
+
+
+Program List
+
+    1. Write a program to find the sum of the digits of a number using recursion.
+    2. Write a menu driven  Program using function to concatenate, compare, find length, convert to lower/upper case strings using pointers.
+
+   Prototypes : a. int StrLen(char S[]);                                  b. void StrCpy(char S[], char T[]);
+                c. int StrCmp(char S[], char T[]);             d. void StrCat(char S[],char T[]);
+                e. void ToUpper(char S[]);                        f. void ToLower(char S[]);
+    3. Write a program to find the most frequent word in an array of strings.
+    4.(a) Write a program to construct a binary  search tree using linked list. 
+    4.(b) Given a binary search tree(BST) , write a method to count the number of leaf nodes in the BST.  The method takes one argument, the root of BST. 
+    4.(c) Given a binary search tree(BST) , write a method to find the height of the  BST.  The method takes one argument, the root of BST. 
+    5.  Given an array of integers, sort the array according to frequency of elements. For example, if the input array is {2, 3, 2, 4, 5, 12, 2, 3, 3, 3, 12}, then modify the array to {3, 3, 3, 3, 2, 2, 2, 12, 12, 4, 5}.  If frequencies of two elements are same, print them in increasing order.

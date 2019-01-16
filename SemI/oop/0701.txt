@@ -1,0 +1,123 @@
+﻿25000
+10000
+4
+mr     a
+10
+qwery_
+7
+4
+mr
+5
+asdfg 
+a
+7
+zxcvba
+
+//Author : Ankit Apurv
+//Week 7
+//24_09_2018
+//Employee result, multi level inheritence
+
+#include <iostream>
+using namespace std;
+
+class Employee
+{
+    protected:
+        unsigned int empCode;
+        char empName[5];
+    public:
+        Employee() {};
+        Employee(unsigned int c, char n[5])
+        {
+            empCode = c;
+            for(int i=0; i<5; i++)
+                empName[i] = n[i];
+        };
+
+class Faculty : protected Employee
+{
+    protected:
+        unsigned int yoe;
+        char qualification[7];
+    public:
+        Faculty() {};
+        Faculty(unsigned int y, char q[7], unsigned int ec, char en[]) : Employee(ec, en)
+        {
+            yoe = y;
+            for(int i=0; i<7; i++)
+                qualification[i] = q[i];
+        };
+        ~Faculty() {};
+};
+
+class Permanent : protected Faculty
+{
+    protected:
+        unsigned int basicPay, totalAllowance;
+    public:
+        {
+            basicPay = b;
+            totalAllowance = t;
+        };
+        ~Permanent() {};
+        void show()
+        {
+            cout << basicPay << "\n";
+            cout << totalAllowance << "\n";
+            cout << yoe << "\n";
+            cout << qualification << "\n";
+            cout << empCode << "\n";
+            cout << empName << "\n";
+        }
+};
+
+class Contract : protected Faculty
+{
+    protected:
+        unsigned int probationYears;
+    public:
+        Contract() {};
+        {
+            probationYears = py;
+        };
+        ~Contract() {};
+        void show()
+        {
+            cout << probationYears << "\n";
+            cout << yoe << "\n";
+            cout << qualification << "\n";
+            cout << empCode << "\n";
+            cout << empName << "\n";
+        }
+};
+
+class NonTeaching : protected Employee
+{
+    protected:
+        char grade;
+    public:
+        NonTeaching() {};
+        NonTeaching(char g, unsigned int ec, char en[]) : Employee(ec, en)
+        {
+            grade = g;
+        };
+        ~NonTeaching() {};
+        void show()
+        {
+            cout << grade << "\n";
+            cout << empCode << "\n";
+            cout << empName << "\n";
+        }
+};
+
+int main(void)
+{
+    Permanent p(25000, 10000, 4, "mr     ", 10, "qwery");
+    Contract c(7, 4, "mr     ", 5, "asdfg");
+    NonTeaching n('a', 7, "zxcvb");
+    p.show();
+    c.show();
+    n.show();
+    return(0);
+}

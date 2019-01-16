@@ -1,0 +1,30 @@
+create table emp1 (
+eno number(5),
+ename varchar2(10),
+sal number(5),
+b_date date
+);
+
+insert into emp1 values('xyz',100,69899,TO_DATE('10-10-2007','DD-MM-YYYY'));
+                        *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+insert into emp1 values(100,'xyz',69899,TO_DATE('10-10-2007','DD-MM-YYYY'));
+1 row created.
+
+insert into emp1 values(100,69899,TO_DATE('10-10-2007','DD-MM-YYYY'));
+            *
+ERROR at line 1:
+ORA-00947: not enough values
+
+insert into emp1 (eno, b_date, sal) values(100,TO_DATE('10-10-2007','DD-MM-YYYY'),69899);
+1 row created.
+
+
+--interactive insert command - for varchar keep in double quotes
+insert into emp1 values(&eno, '&ename', 69899, TO_DATE('&b_date','DD-MM-YYYY'));
+
+
+update emp1 set sal=40000;-- WHERE select * from emp1;

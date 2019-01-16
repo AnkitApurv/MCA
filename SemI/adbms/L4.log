@@ -1,0 +1,282 @@
+SQL> SELECT * FROM emp;
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        50 Aman       CEO                  10-DEC-70      60000      30000      
+03-DEC-90                                                                       
+                                                                                
+        11 Raghu      GM                50 10-DEC-74      45000      15000      
+03-NOV-85                                                                       
+                                                                                
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+6 rows selected.
+
+SQL> SELECT * FROM dept;
+
+DNO DNAME      LOCATION                                                         
+--- ---------- ---------                                                        
+D1  Marketing  CHN                                                              
+D2  Research   MNG                                                              
+D5  IT         BNG                                                              
+D3  Admin      BNG                                                              
+D4  HR         BNG                                                              
+
+SQL> SELECT * FROM proj;
+
+DNO PRJ_N PRJ_NAME   PRJ_CREDITS STRT_DATE END_DATE                             
+--- ----- ---------- ----------- --------- ---------                            
+D1  P1    ab                   2 10-OCT-06 10-OCT-07                            
+D2  P1    cd                   2 01-OCT-07 10-OCT-07                            
+D3  P2    ef                   7 10-OCT-07 10-OCT-17                            
+D1  P3    gh                   5 10-JAN-07 10-OCT-07                            
+D4  P2    ij                   7 10-OCT-17 10-OCT-18                            
+
+SQL> SELECT * FROM emp WHERE sal>25000 OR dept_no='D1';
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        50 Aman       CEO                  10-DEC-70      60000      30000      
+03-DEC-90                                                                       
+                                                                                
+        11 Raghu      GM                50 10-DEC-74      45000      15000      
+03-NOV-85                                                                       
+                                                                                
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+6 rows selected.
+
+SQL> SELECT * FROM emp WHERE sal>25199 AND sal<35201;
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+
+SQL> CREATE TABLE emp_pseudo AS(SELECT * FROM emp);
+
+Table created.
+
+SQL> SELECT * FROM emp_pseudo;
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        50 Aman       CEO                  10-DEC-70      60000      30000      
+03-DEC-90                                                                       
+                                                                                
+        11 Raghu      GM                50 10-DEC-74      45000      15000      
+03-NOV-85                                                                       
+                                                                                
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+6 rows selected.
+
+SQL> SELECT DISTINCT dept_no FROM emp;
+
+DEP                                                                             
+---                                                                             
+                                                                                
+D1                                                                              
+D4                                                                              
+
+SQL> SELECT * FROM emp ORDER BY ename ASC;
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        50 Aman       CEO                  10-DEC-70      60000      30000      
+03-DEC-90                                                                       
+                                                                                
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+        11 Raghu      GM                50 10-DEC-74      45000      15000      
+03-NOV-85                                                                       
+                                                                                
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+6 rows selected.
+
+SQL> CREATE TABLE mgr AS(SELECT * FROM emp WHERE job IN('MGR','A.MGR','GM'));
+
+Table created.
+
+SQL> SELECT * FROM mgr;
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        11 Raghu      GM                50 10-DEC-74      45000      15000      
+03-NOV-85                                                                       
+                                                                                
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+
+SQL> SELECT ename, dept_no FROM emp;
+
+ENAME      DEP                                                                  
+---------- ---                                                                  
+Aman                                                                            
+Raghu                                                                           
+Ravi       D1                                                                   
+Manu       D4                                                                   
+Raviraj    D1                                                                   
+Vishal     D1                                                                   
+
+6 rows selected.
+
+SQL> SELECT * FROM emp WHERE mgr_id='1';
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+
+SQL> SELECT * FROM emp WHERE ename LIKE 'M%';
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+
+SQL> SELECT * FROM emp WHERE ename LIKE 'R%';
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        11 Raghu      GM                50 10-DEC-74      45000      15000      
+03-NOV-85                                                                       
+                                                                                
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+
+SQL> SELECT * FROM emp WHERE ename NOT LIKE 'S%';
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        50 Aman       CEO                  10-DEC-70      60000      30000      
+03-DEC-90                                                                       
+                                                                                
+        11 Raghu      GM                50 10-DEC-74      45000      15000      
+03-NOV-85                                                                       
+                                                                                
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+6 rows selected.
+
+SQL> SELECT DISTINCT job FROM emp;
+
+JOB                                                                             
+---------                                                                       
+CLRK                                                                            
+MGR                                                                             
+GM                                                                              
+CEO                                                                             
+A.MGR                                                                           
+
+SQL> spool off

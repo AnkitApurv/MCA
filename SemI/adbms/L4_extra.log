@@ -1,0 +1,173 @@
+SQL> SELECT * FROM emp WHERE DEPT_NO='D1' AND PRJ_ID='P3';
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+SQL> SELECT * FROM emp WHERE job IN('MGR') AND DEPT_NO IS 'D2' OR 'D3';
+SELECT * FROM emp WHERE job IN('MGR') AND DEPT_NO IS 'D2' OR 'D3'
+                                                     *
+ERROR at line 1:
+ORA-00908: missing NULL keyword 
+
+
+SQL> SELECT * FROM emp WHERE job IN('MGR') AND DEPT_NO ='D2' OR DEPT_NO ='D3';
+
+no rows selected
+
+SQL> SELECT * FROM emp WHERE job='CLRK' AND PRJ_ID ='P3' OR DEPT_NO ='D3';
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+SQL> SELECT * FROM emp WHERE DATE_OF_JOIN<TO_DATE('01-01-2005','DD-MM-YYYY');
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        50 Aman       CEO                  10-DEC-70      60000      30000      
+03-DEC-90                                                                       
+                                                                                
+        11 Raghu      GM                50 10-DEC-74      45000      15000      
+03-NOV-85                                                                       
+                                                                                
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+6 rows selected.
+
+
+SQL> SELECT * FROM emp WHERE job='CLRK' OR job='A.CLRK' AND MGR_ID='6';
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+SQL> SELECT * FROM emp WHERE (job='CLRK' OR job='A.CLRK') AND MGR_ID='6';
+
+no rows selected
+
+SQL> SELECT * FROM emp WHERE MGR_ID='6' AND job='CLRK' OR job='A.CLRK';
+
+no rows selected
+
+SQL> SELECT * FROM emp WHERE MGR_ID = null;
+
+no rows selected
+
+SQL> SELECT * FROM emp WHERE DATE_BIRTH BETWEEN TO_DATE('01-01-1980','DD-MM-YYYY') AND TO_DATE('01-01-1990','DD-MM-YYYY');
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+SQL> SELECT dname, location FROM dept WHERE dname='Marketing' OR dname='Sales' OR dname='Research';
+
+DNAME      LOCATION                                                             
+---------- ---------                                                            
+Marketing  CHN                                                                  
+Research   MNG                                                                  
+                                                                       
+
+SQL> SELECT * FROM dept;
+
+DNO DNAME      LOCATION                                                         
+--- ---------- ---------                                                        
+D1  Marketing  CHN                                                              
+D2  Research   MNG                                                              
+D5  IT         BNG                                                              
+D3  Admin      BNG                                                              
+D4  HR         BNG                                                              
+
+SQL> SELECT dname FROM dept WHERE location NOT IN 'MNG' OR location NOT IN 'HYD';
+
+DNAME                                                                           
+----------                                                                      
+Marketing                                                                       
+Research                                                                        
+IT                                                                              
+Admin                                                                           
+HR                                                                              
+                                                                      
+
+SQL> SELECT * FROM emp WHERE PRJ_ID NOT IN 'P1' OR  PRJ_ID NOT IN 'P3' OR  PRJ_ID NOT IN 'P5';
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+         1 Ravi       MGR               11 10-OCT-85      32000      10000 D1   
+02-OCT-01 P1                                                                    
+                                                                                
+        25 Manu       A.MGR             50 10-DEC-80      40000      16000 D4   
+02-OCT-02 P2                                                                    
+                                                                                
+         2 Raviraj    CLRK               1 10-DEC-80      24000      12000 D1   
+12-NOV-00 P3                                                                    
+                                                                                
+
+     EMPNO ENAME      JOB           MGR_ID DATE_BIRT        SAL       COMM DEP  
+---------- ---------- --------- ---------- --------- ---------- ---------- ---  
+DATE_OF_J PRJ_I                                                                 
+--------- -----                                                                 
+         3 Vishal     CLRK              11 10-DEC-80      21000      16000 D1   
+02-OCT-01 P3                                                                    
+                                                                                
+
+SQL> spool off
