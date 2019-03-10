@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>L73 Digital Clock</title>
+	<script type="text/javascript">
+	window.onload = function k() {
+		setInterval(refresh, 1000);
+	}
+	function refresh() {
+		setTimeout(display, 0);
+	}
+	function display() {
+		var label = document.getElementById("clockLink");
+		label.href = getTime();
+	}
+	function getTime() {
+		var currentDate = new Date();
+		return currentDate.toString();
+	}
+	</script>
+</head>
+<body>
+<a href="" id="clockLink">Hover for clock</a>
+</body>
+</html>

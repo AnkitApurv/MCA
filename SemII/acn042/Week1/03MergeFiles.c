@@ -25,28 +25,40 @@ int main(void)
 	{
 		printf("Control in Child Process\n");
 
-		FILE* f1 = fopen("/tmp/t1.txt", "a+");
-		FILE* f2 = fopen("/tmp/t2.txt", "a+");
-		FILE* f3 = fopen("/tmp/t3.txt", "a+");	
+		char buff1[12] = {'\0'};
+		char buff2[12] = {'\0'};
+		char buff3[24] = {'\0'};
+
+		FILE* f1a = fopen("t1.txt", "w");
+		fprintf(f1a,"first file ");
+		fclose(f1a);
+
+		FILE* f1b = fopen("t1.txt", "r");
+		fgets(buff1, 12, f1b);
+		fclose(f1b);
+
+		printf("t1.txt : %s\n", buff1);
+
+		FILE* f2a = fopen("t2.txt", "w");
+		fprintf(f2a, "second file");
+		fclose(f2a);
 		
-		char buff[24] = {'\0'};
+		FILE* f2b = fopen("t2.txt", "r");
+		fgets(buff2, 12, f2b);
+		fclose(f2b);
 
-		fputs("first file\n", f1);
-		fgets(buff, 11, f1);
-		fclose(f1);
-		printf("t1.txt : %s\n", buff);
-		fputs(buff, f3);
+		printf("t2.txt : %s\n", buff2);
 
-		fputs("second file\n", f2);
-		fgets(buff, 12, f2);
-		fclose(f2);
-		printf("t2.txt : %s\n", buff);
-		fputs(buff, f3);
+		FILE* f3a = fopen("t3.txt", "w");
+		fprintf(f3a,"%s", buff1);
+		fprintf(f3a,"%s", buff2);
+		fclose(f3a);
 
-		fgets(buff, 24, f3);
-		printf("t3.txt : %s\n", buff);
+		FILE* f3b = fopen("t3.txt", "r");
+		fgets(buff3, 24, f3b);
+		fclose(f3b);
 
-		fclose(f3);
+		printf("t3.txt : %s\n", buff3);
 	}
 	return 0;
 }

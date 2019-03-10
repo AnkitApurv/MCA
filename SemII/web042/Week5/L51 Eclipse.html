@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>L51 Eclipse</title>
+	<style>
+	body {
+		background-color : lightblue;
+		animation-iteration-count : infinite;
+		animation-timing-function : linear;
+		animation-name : darken;
+		animation-duration : 5s;
+	}
+	.circle {
+		width : 200px;
+		height : 200px;
+		border-radius : 50%;
+	}
+	.moon {
+		background : darkgrey;
+		position: absolute; top:25%; bottom:25%; left: 400px; right: 400px;
+	}
+	.shadow {
+		position : left;
+		animation-iteration-count : infinite;
+		animation-timing-function : linear;
+		animation-name : eclipse;
+		animation-duration : 5s;
+		position: absolute; top:25%; bottom:25%;
+	}
+	@keyframes eclipse {
+		0% { position : absolute; left: 200px; right: 200px; background : lightblue;}
+		50% { position: absolute; left: 400px; right: 400px; background: grey;}
+		100% { position: absolute; left: 600px; right: 600px; background : lightblue;}
+	}
+	@keyframes darken-background {
+		0% { background : lightblue; }
+		50% { background: blue; }
+		100% { background : lightblue; }
+	}
+	</style>
+</head>
+<body>
+<div>
+	<div class="circle moon"></div>
+	<div class="circle shadow"></div>
+</div>
+</body>
+</html>

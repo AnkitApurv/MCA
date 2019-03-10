@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>L63 OptionSelect</title>
+	<script type="text/javascript">
+	function op()
+	{
+		var name = document.getElementById("fname").value;
+		if(!name=="")
+			window.open(name, "_blank");
+	}
+	</script>
+</head>
+<body>
+<select onchange="op();" id="fname">
+	<option value="">Please Select...</option>
+	<option value="L61 Prompts.html">L61 Prompts.html</option>
+	<option value="L62 New Tab.html">L62 New Tab.html</option>
+</select>
+</body>
+</html>

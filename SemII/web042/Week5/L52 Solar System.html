@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>L52 Solar System</title>
+	<style>
+	#solar-system {
+		position : fixed;
+		top: 0%; right: 0%; bottom: 0%; left: 0%;
+		width : 100%;
+		height : 100%;
+		border : 1px solid red;
+		background-color: black;
+	}
+	#sun { 
+		position : fixed;
+		background-color: #FB7209;
+		top: 50%; left: 50%; bottom: 50%; right: 50%;
+		width: 12.5%; height: 25%;
+		border: solid 1px #FB7209;
+		border-radius: 50%;
+	 }
+	.orbit {
+		position: fixed;
+		top: 48.75%; left: 48.75%; bottom: 50%; right: 50%;
+		border: 1px solid white;
+		border-radius: 50%;
+		animation-name: orbitK;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+	}
+	.planet {
+		position: fixed;
+		top: 0%; left: 0%;
+		border: solid 1px;
+		border-radius: 50%;
+		margin-top: 9.5%;
+		margin-left: 9.5%;
+	}
+	@keyframes orbitK {
+		0% { transform: rotateZ(0deg); }
+		100% { transform: rotateZ(360deg); }
+	}
+
+	#mercuryO {
+		width: 15%;
+		height: 30%;
+		top: 48.75%; left: 48.75%;
+		animation-duration: 3s;
+	}
+	#mercuryP {
+		background-color: grey;
+		width: 1.1em;
+		height: 1.1em;
+		border: grey;
+	}
+
+	#venusO {
+		width: 18%;
+		height: 36%;
+		top: 46.75%; left: 46.75%;
+		animation-duration: 7s;
+	}
+	#venusP {
+		background-color: red;
+		width: 2.1em;
+		height: 2.1em;
+		border: red;
+	}
+
+	#earthO {
+		width: 21%;
+		height: 42%;
+		top: 44.5%; left: 44.75%;
+		animation-duration: 12s;
+	}
+	#earthP {
+		background-color: lightblue;
+		width: 2.8em;
+		height: 2.8em;
+		border: lightblue;
+	}
+
+	#marsO {
+		width: 24%;
+		height: 45%;
+		top: 42.5%; left: 42.75%;
+		animation-duration: 10s;
+	}
+	#marsP {
+		background-color: red;
+		width: 1.8em;
+		height: 1.8em;
+		border: red;
+	}
+
+	#astroidBeltO {
+		width: 30%;
+		height: 51%;
+		top: 40%; left: 40%;
+		border: 12px solid grey;
+		animation-duration: 12s;
+	}
+
+	#jupiterO {
+		width: 33%;
+		height: 54%;
+		top: 38%; left: 38%;
+		animation-duration: 18s;
+	}
+	#jupiterP {
+		background-color: brown;
+		width: 4.8em;
+		height: 4.8em;
+		border: brown;
+	}
+
+	#saturnO {
+		width: 36%;
+		height: 57%;
+		top: 36%; left: 36%;
+		animation-duration: 21s;
+	}
+	#saturnP {
+		background-color: brown;
+		width: 4em;
+		height: 4em;
+		border: brown;
+	}
+
+	#uranusO {
+		width: 39%;
+		height: 60%;
+		top: 34%; left: 34%;
+		animation-duration: 23s;
+	}
+	#uranusP {
+		background-color: green;
+		width: 3.2em;
+		height: 3.2em;
+		border: green;
+	}
+
+	#neptuneO {
+		width: 42%;
+		height: 63%;
+		top: 31%; left: 31%;
+		animation-duration: 24s;
+	}
+	#neptuneP {
+		background-color: blue;
+		width: 3em;
+		height: 3em;
+		border: blue;
+	}
+	</style>
+</head>
+<body>
+<div id="solar-system">
+	<div id="sun"></div>
+	<div class="orbit" id="mercuryO">
+		<div class="planet" id="mercuryP"></div>
+	</div>
+	<div class="orbit" id="venusO">
+		<div class="planet" id="venusP"></div>
+	</div>
+	<div class="orbit" id="earthO">
+		<div class="planet" id="earthP"></div>
+	</div>
+	<div class="orbit" id="marsO">
+		<div class="planet" id="marsP"></div>
+	</div>
+
+	<div class="orbit" id="astroidBeltO"></div>
+
+	<div class="orbit" id="jupiterO">
+		<div class="planet" id="jupiterP"></div>
+	</div>
+	<div class="orbit" id="saturnO">
+		<div class="planet" id="saturnP"></div>
+	</div>
+	<div class="orbit" id="uranusO">
+		<div class="planet" id="uranusP"></div>
+	</div>
+	<div class="orbit" id="neptuneO">
+		<div class="planet" id="netpuneP"></div>
+	</div>
+</div>
+</body>
+</html>

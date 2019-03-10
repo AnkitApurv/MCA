@@ -1,0 +1,39 @@
+body {
+	font-family : sans-serif;
+	font-size : 12;
+}
+
+section {
+	text-align : center;
+	padding : 10px;
+}
+
+header {
+	background-color : black;
+	color : white;
+}
+
+nav {
+	color : royalblue;
+	background-color : yellow;
+}
+
+.adertisement {
+	color : lightgrey;
+	font-size : 10;
+	font-weight : 200;
+	background-color : red;
+}
+
+article {
+	color : white;
+	background-color : green;
+}
+
+aside {
+	background-color : blue;
+}
+
+footer {
+	background-color : orange;
+}

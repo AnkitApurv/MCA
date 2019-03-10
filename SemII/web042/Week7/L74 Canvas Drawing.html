@@ -1,0 +1,110 @@
+<!--
+https://stackoverflow.com/a/7438862
+
+Here's the most straightforward way to create a drawing application with canvas:
+
+    Attach a mousedown, mousemove, and mouseup event listener to the canvas DOM
+
+    on mousedown, get the mouse coordinates, and use the moveTo() method to position your drawing cursor and the beginPath() method to begin a new drawing path.
+    
+    on mousemove, continuously add a new point to the path with lineTo(), and color the last segment with stroke().
+    on mouseup, set a flag to disable the drawing.
+
+From there, you can add all kinds of other features like giving the user the ability to choose a line thickness, color, brush strokes, and even layers.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>L74 Canvas Drawing</title>
+	<style type="text/css">
+	#c {
+		position : fixed; width : 95%; height : 95%;
+		border : 1px solid #000000;
+	}
+	</style>
+	<script type="text/javascript">
+		var canvas;
+		var brush;
+		var currentX, previousX, currentY, previousY;
+		var continueDraw = false;
+		var scaleX, scaleY, rect;
+
+		function init() {
+			canvas = document.getElementById("c");
+			brush = c.getContext("2d");
+			var useCapture = false; //instead of bubble
+			canvas.addEventListener("mouseenter", function (e) { getCoords("enter", e) }, useCapture);
+			canvas.addEventListener("mousedown", function (e) { onMouseDown(e) }, useCapture);
+			canvas.addEventListener("mousemove", function (e) { onMouseMove(e) }, useCapture);
+			canvas.addEventListener("mouseup", function (e) { onMouseUp(e) }, useCapture);
+			canvas.addEventListener("mouseleave", function (e) { onMouseLeave(e) }, useCapture);
+			canvas.strokeStyle = "black";
+        	canvas.lineWidth = 1;
+        	previousX = currentX = previousY = currentY = 0;
+
+        	//https://stackoverflow.com/a/17130415
+        	rect = canvas.getBoundingClientRect();
+			scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for X
+      		scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for Y
+		}
+
+		function onMouseDown(e) {
+			continueDraw = true;
+			getCoords("down", e);
+		}
+
+		function onMouseMove(e) {
+			if(continueDraw) {
+				getCoords("move", e);
+				draw();
+			}
+		}
+
+		function onMouseUp(e) {
+			continueDraw = false;
+			getCoords("up", e);
+		}
+
+		function onMouseLeave(e) {
+			continueDraw = false;
+			getCoords("leave", e);
+		}
+
+		function getCoords(eventType, e) {
+			//https://stackoverflow.com/a/17130415
+			switch(eventType) {
+				case "down" :
+				case "move" :
+				case "up" :
+					previousX = currentX;
+					currentX = (e.clientX - rect.left) * scaleX;
+					previousY = currentY;
+					currentY = (e.clientY - rect.top) * scaleY;
+					break;
+
+				case "enter" :
+					previousX = currentX = (e.clientX - rect.left) * scaleX;
+					previousY = currentY = (e.clientY - rect.top) * scaleY;
+					break;
+
+				case "leave" :
+				default:
+					previousX = currentX = previousY = currentY = 0;
+					break;
+			}
+		}
+
+		function draw() {
+			brush.beginPath();
+        	brush.moveTo(previousX, previousY);
+        	brush.lineTo(currentX, currentY);
+        	brush.stroke();
+        	brush.closePath();
+		}
+	</script>
+</head>
+<body onload="javascript : init();">
+	 <canvas id="c"></canvas>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>L62 New Tab</title>
+	<script type="text/javascript">
+	var tab;
+	function showNewTab() {
+		tab = window.open("L61 Prompts.html", "_blank");
+	}
+	function closeNewTab() {
+		tab.close();
+	}
+	</script>
+</head>
+<body>
+	<input type=button value="Show" onclick="showNewTab();"></input><br/>
+	<input type=button value="Close" onclick="closeNewTab();"></input><br/>
+</body>
+</html>

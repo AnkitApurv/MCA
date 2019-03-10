@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>L61 Prompts</title>
+	<script type="text/javascript">
+	var message;
+	function showPrompt() {
+		message = prompt("Message : ", "");
+		setMessage();
+	}
+	function showAlert() {
+		alert(" : MESSAGE!!! : ");
+	}
+	function showConfirm() {
+		message = confirm("Message : Yes/No");
+		setMessage();
+	}
+	function setMessage() {
+		document.getElementById("op").innerText = message;
+	}
+	</script>
+</head>
+<body>
+<input type=button value="Prompt" onclick="showPrompt();"></input><br/>
+<input type=button value="Alert" onclick="showAlert();"></input><br/>
+<input type=button value="Confirm" onclick="showConfirm();"></input><br/>
+<label id="op"></label>
+</body>
+</html>

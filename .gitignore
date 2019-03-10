@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+/SemII/acn042/TCP_UDP_Help
+/SemI/oop/.vs
+/SemII/acn042/Week4/.vs
+/SemII/acn042/multi_compile_1.pdf
+/SemII/acn042/c_multi_compile.txt
+/SemII/acn042/multi_compile_2.pdf
+/SemII/acn042/multi_compile_3.pdf
+/SemII/GCPDemo/.vs/GCPDemo/v15
+/SemII/GCPDemo/CreateData/x64/Debug
+/SemII/GCPDemo/Demo/x64/Debug
+/SemII/GCPDemo/x64/Debug

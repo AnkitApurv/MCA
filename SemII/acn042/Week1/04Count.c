@@ -21,30 +21,23 @@ int main(void)
 	{
 		printf("Control in Child Process\n");
 
-		FILE* f1 = fopen("/tmp/t1.txt", "a+");
-		if(f1 == NULL)
-		{
-			printf("file not found!");
-		}
-		char buff[12];
+		char buff[11] = {'\0'};
 
-		fputs("first file\n", f1);
-		int i = 0;
-		while(buff[i+1] !='\n')
-		{
-			buff[i] = (char)fgetc(f1);
-			i++;
-		}
+		FILE* f1a = fopen("t4.txt", "w");
+		fprintf(f1a, "fourth file");
+		fclose(f1a);
 
-		fclose(f1);
-
-		int wordCount=1, vovewlCount=0;
-		for(i=0; i<12; i++)
+		FILE* f1b = fopen("t4.txt", "r");
+		fgets(buff, 12, f1b);
+		fclose(f1b);
+		int i=0, wordCount=1, vovewlCount=0;
+		while(i<11)
 		{
 			if(buff[i] == ' ')
 				wordCount++;
-			if(buff[i] == 'a' || buff[i] == 'e' || buff[i] == 'i' || buff[i] == 'o' || buff[i] == 'u' || buff[i] == 'A' || buff[i] == 'E' || buff[i] == 'I' || buff[i] == 'O' || buff[i] == 'U')
+			else if(buff[i] == 'a' || buff[i] == 'e' || buff[i] == 'i' || buff[i] == 'o' || buff[i] == 'u' || buff[i] == 'A' || buff[i] == 'E' || buff[i] == 'I' || buff[i] == 'O' || buff[i] == 'U')
 				vovewlCount++;
+			i++;
 		}
 		printf("Word Count : %d\n", wordCount);
 		printf("Vovewl Count : %d\n", vovewlCount);
