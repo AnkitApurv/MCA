@@ -6,11 +6,6 @@
 
 using namespace std;
 namespace io {
-	/*
-	why : accept int arr[] as parameter instead of creating and returning an array inside the function?
-	answer : since we will need a parameter stating array size to know how much to read, so why not the pointer to array.
-	also, we are deriving arraySize from the passed array, and not accepting it as parameter so no chance of overflows.
-	*/
 	void readArray(int* arr, string fileName) {
 		ifstream r(fileName, ios::binary | ios::in);
 		r.seekg(ios::beg);

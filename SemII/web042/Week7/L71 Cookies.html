@@ -7,6 +7,7 @@
 	function setCookie() {
 		var name = prompt("Name : ", "");
 		var current = new Date;
+		//current.setTime(current.getTime());
 		var expiry = new Date;
 		expiry.setTime(current.getTime() + 30*24*60*60*1000);
 
@@ -26,10 +27,11 @@
 
 		var name, createdOn;
 		 for(var i = 0; i < cookieArr.length; i++) {
-		 	if(i === 0)
-    			name = cookieArr[i].substring(5); //skip initial "name=" substring
-    		else if(i === 1)
-    			createdOn = cookieArr[i].substring(11); //skip initial "createdOn=" substring
+    		var c = cookieArr[i];
+    		if(i === 1)
+    			createdOn = cookieArr[i].substring(11); //skip initial 10 chars
+    		else if(i === 0)
+    			name = cookieArr[i].substring(5); //skip initial 10 chars
     	}
 
 		var responseText = "Welcome again! " + name
