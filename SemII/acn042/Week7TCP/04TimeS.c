@@ -13,10 +13,6 @@
 #include <stdbool.h>
 #include <time.h>
 
-struct ops {
-	int op1, op2, operator, result;
-};
-
 int main(void) {
 	struct sockaddr_in selfAddress, clientAddress;
 	const int flags = 0;
@@ -42,6 +38,7 @@ int main(void) {
 		time_t serverTime = time(NULL);
 		
 		send(clientSocket, &serverTime, sizeof(time_t), flags);
+		close(clientSocket);
 		printf("Sent\n\n");
 	}
 	close(socketfd);
