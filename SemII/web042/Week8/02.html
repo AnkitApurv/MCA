@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8"/>
+    <title>02 XML data retrival</title>
+    <script type="text/javascript">
+    /*
+        function getXmlDoc(xmlDocName) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", xmlDocName, true);
+            xhttp.send();
+            var xmlDoc;
+            xhttp.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    xmlDoc = this.responseXML;
+                }
+            }
+            return xmlDoc;
+        }
+        */
+        function fetchPasswd() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "02.xml", true);
+            xhttp.send();
+            xhttp.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    var xmlDoc = xhttp.responseXML;
+                    var users = xmlDoc.getElementsByTagName("user");
+                    writeResponse(users);
+                }
+            }
+            return;
+        }
+        function writeResponse(users) {
+            var userID = document.getElementById("tUserId").value;
+            var matchFound = false;
+            var passwdLabel = document.getElementById("passwd");
+            var passwd;
+            for(var i=0; i<users.length; i++) {
+                if(userID == users[i].getElementsByTagName("id")[0].innerHTML) {
+                    matchFound = true;
+                    passwd = users[i].getElementsByTagName("passwd")[0].innerHTML;
+                    break;
+                }
+            }
+            if(matchFound)
+                passwdLabel.innerText = passwd;
+            else
+                passwdLabel.innerText = "No matches found!"
+        }
+    </script>
+</head>
+<body>
+    User ID : <input type="text" id="tUserId" /><br/>
+    <input type="button" value="Find Password!" onclick="fetchPasswd();"/><br/>
+    Password : <label id="passwd"></label>
+</body>
+</html>

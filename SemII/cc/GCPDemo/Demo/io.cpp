@@ -7,6 +7,7 @@
 
 using namespace std;
 namespace io {
+	string dirName = "./results/";
 	void readArray(int* arr, string fileName) {
 		ifstream r(fileName, ios::binary | ios::in);
 		r.seekg(ios::beg);

@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<script>
+	function doCheckForm() {
+		var l = document.getElementById("errors");
+		
+		if(document.getElementById("tname").value === "")
+			l.innerHTML += "Name field empty.<br/>";
+			
+		if(document.getElementById("taddress").value === "")
+			l.innerHTML += "Address field empty.<br/>";
+			
+		if(document.getElementById("tpasswd").value === "")
+			l.innerHTML += "Password field empty.<br/>";
+			
+		if(document.getElementById("tconfpwd").value === "")
+			l.innerHTML += "Confirm Password field empty.<br/>";
+			
+		if(document.getElementById("tphone").value === "")
+			l.innerHTML += "Phone field empty.<br/>";
+			
+		if(document.getElementById("temail").value === "")
+			l.innerHTML += "Eamil field empty.<br/>";
+			
+		var isValidName = document.getElementById("tname").value.match(/[^A-Z][a-z]+$/g);
+		
+		var isValidPhone = document.getElementById("tphone").value.match(/[^0-9]\w(10, 10)$/);
+		
+		var isValidPasswd = document.getElementById("tpasswd").value.match(/^\w(8, 12)$/);
+		
+		var isPasswdMatch = false;
+		if(document.getElementById("tconfpwd").value === document.getElementById("tpasswd").value)
+			isPasswdMatch = true;
+			
+		var isValidEmail = document.getElementById("tpasswd").value.match(/^[A-Za-z0-9]*\w+(@jobplus.com)/);
+		
+		if(!isValidName)
+			l.innerHTML += "Invalid Name<br/>";
+		if(!isValidPhone)
+			l.innerHTML += "Invalid Phone<br/>";
+		if(!isValidPasswd)
+			l.innerHTML += "Invalid Password<br/>";
+		if(!isPasswdMatch)
+			l.innerHTML += "Passwords do not match<br/>";
+		if(!isValidEmail)
+			l.innerHTML += "Invalid Email<br/>";
+			
+		return;
+	}
+	</script>
+</head>
+<body>
+<form>
+	Name <input type="text" id="tname" required /><br/>
+	Address <input type="text" id="taddress" required /><br/>
+	Password <input type="password" id="tpasswd" required /><br/>
+	Confirm <input type="password" id="tconfpwd" required /><br/>
+	Phone <input type="number" id="tphone" required /><br/>
+	Email <input type="email" id="temail" required /><br/>
+	
+	<input type="radio" name="gender" value="male"> Male<br/>
+	<input type="radio" name="gender" value="female"> Female<br/>
+	<input type="radio" name="gender" value="other"> Other<br/>
+	
+	<input type="checkbox" name="hobby" value="biking"> Biking<br/>
+	<input type="checkbox" name="hobby" value="hiking"> Hiking<br/>
+	<input type="checkbox" name="hobby" value="reading" checked> Reading<br/>
+	<input type="checkbox" name="hobby" value="music"> Music<br/>
+	<input type="checkbox" name="hobby" value="culinary"> Culinary<br/>
+	
+	<input type="button" value="Sign Up!" onclick="doCheckForm();"/>
+</form>
+<label id="errors"></label>
+
+</body>

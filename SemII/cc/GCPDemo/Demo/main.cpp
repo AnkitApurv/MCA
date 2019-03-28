@@ -1,6 +1,6 @@
 #include <iostream>	//cout
 #include <string>	//string
-
+#include <CL/cl.hpp>
 #include "io.h"
 #include "cpu.h"
 #include "gpu.h"
@@ -16,11 +16,11 @@ int main(void) {
 	io::readArray(b, "b.json");
 
 	double cpuTimeTaken = compute::cpuCompute(a, b, c);
-	io::writeArray(c, "cpu.json");
+	//io::writeArray(c, "cpu.json");
 	io::writeSum("cpu.txt", a, b, c);
 
 	double gpuTimeTaken = compute::gpuCompute(a, b, c);
-	io::writeArray(c, "gpu.json");
+	//io::writeArray(c, "gpu.json");
 	io::writeSum("gpu.txt", a, b, c);
 
 	double timesFaster = cpuTimeTaken / gpuTimeTaken;

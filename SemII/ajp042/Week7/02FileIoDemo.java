@@ -11,8 +11,9 @@ import java.io.*;
 
 class FileIoDemo {
 	/*
-	args[0] unsorteStrings
-	args[1] sortedStrings
+	args[0] unsortedStrings fileName
+	args[1] sortedStrings fileName
+	args[2-n] strings
 	*/
 	public static void main(String ... args) throws IOException {
 		String k[] = new String[args.length-2];
@@ -62,8 +63,7 @@ class FileIoDemo {
 	
 	private static char[] readFile(String fileName) throws IOException {
 		File newFile = new File(".", fileName);
-		if(! (newFile.exists() & newFile.isFile() & newFile.canRead()) )
-		{
+		if(! (newFile.exists() & newFile.isFile() & newFile.canRead()) ) {
 			System.out.println("Can't read file!");
 			System.exit(0);
 		}
@@ -83,8 +83,7 @@ class FileIoDemo {
 		l += k.length;
 		char data[] = new char[l];
 		
-		for(String w : k)
-		{
+		for(String w : k) {
 			for(int j=0; j<w.length(); j++)
 				data[i++] = w.charAt(j); //char to char
 			data[i++] = ' '; //separator

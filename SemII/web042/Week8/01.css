@@ -1,0 +1,9 @@
+student {
+    display : block;
+    font-family : consolas, monospace;
+    background-color : #FFDFC4;
+}
+
+registerNo {
+    color : #E60000;
+}

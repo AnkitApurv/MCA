@@ -41,3 +41,7 @@
 /SemII/GCPDemo/CreateData/x64/Debug
 /SemII/GCPDemo/Demo/x64/Debug
 /SemII/GCPDemo/x64/Debug
+/SemII/ajp042/.vscode
+/SemII/ajp042/Week8/.vscode
+/SemII/cc/GCPDemo/.vs/GCPDemo/v15/ipch/AutoPCH/1dded7d3430e5062
+*.db-wal

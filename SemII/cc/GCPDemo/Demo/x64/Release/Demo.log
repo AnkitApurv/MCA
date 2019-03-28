@@ -1,7 +1,7 @@
 ﻿  gpu.cpp
   Generating code
-  2 of 584 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+  1 of 592 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    19 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Demo.vcxproj -> F:\MCA\SemII\cc\GCPDemo\x64\Release\Demo.exe

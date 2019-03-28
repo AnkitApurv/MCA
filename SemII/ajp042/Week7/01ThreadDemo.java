@@ -16,6 +16,7 @@ class ThreadDemo {
 			s.join();
 			CalcCube c = new CalcCube(i);
 			c.start();
+			c.join();
 		}
 		return;
 	}
