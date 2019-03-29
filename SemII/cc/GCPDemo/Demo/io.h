@@ -4,7 +4,7 @@
 #include <string>	//string
 
 namespace io {
-	const int arraySize = 100000;
+	const int arraySize = 128*1000;
 	void readArray(int* arr, std::string fileName);
 	void writeArray(int* arr, std::string fileName);
 	void createInput(std::string fileA, std::string fileB);

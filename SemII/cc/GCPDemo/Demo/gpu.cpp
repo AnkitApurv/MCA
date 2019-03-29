@@ -12,11 +12,11 @@ namespace compute {
 		std::string kernelCode =
 			"__kernel void vectorAdd(__constant int* a, __constant int* b, __global int* c, __constant int* countOfElements) {	\n"\
 			"	//get index of each work item																				\n"\
-			"	int globalIndex = get_global_id(0);																			\n"\
-			"	//bound check (equivalent to the limit on a 'for' loop for standard/serial C code, not needed				\n"\
+			"	int globalIndex = get_global_id(0);		/*//int get_global_id(int dimensionNumber);							\n"\
+			"	//bound check (equivalent to the limit on a 'for' loop for standard/serial C code), not truely needed		\n"\
 			"	if(globalIndex >= *countOfElements) {																		\n"\
 			"		return;																									\n"\
-			"	}																											\n"\
+			"	}*/																											\n"\
 			"	//add the vector elements																					\n"\
 			"	c[globalIndex] = a[globalIndex] + b[globalIndex];															\n"\
 			"	return;																										\n"\
@@ -61,12 +61,15 @@ namespace compute {
 		cl::Buffer bufCount(context, CL_MEM_READ_ONLY, sizeof(cl_int));
 
 		//write arrays to OpenCL memory
-		cl_bool blockingTrue = CL_TRUE;
+		cl_bool blockingTrue = CL_TRUE; //CL_TRUE == 1;
 		std::size_t offsetNone = 0;
 		//int arrSize = io::arraySize;
-		computeQueue.enqueueWriteBuffer(bufA, blockingTrue, offsetNone, io::arraySize * sizeof(cl_int), a);
-		computeQueue.enqueueWriteBuffer(bufB, blockingTrue, offsetNone, io::arraySize * sizeof(cl_int), b);
-		computeQueue.enqueueWriteBuffer(bufCount, blockingTrue, offsetNone, sizeof(cl_int), &io::arraySize);
+		cl_int wasSuccessful;
+		wasSuccessful = computeQueue.enqueueWriteBuffer(bufA, blockingTrue, offsetNone, io::arraySize * sizeof(cl_int), a);
+		wasSuccessful = computeQueue.enqueueWriteBuffer(bufB, blockingTrue, offsetNone, io::arraySize * sizeof(cl_int), b);
+		wasSuccessful = computeQueue.enqueueWriteBuffer(bufCount, blockingTrue, offsetNone, sizeof(cl_int), &io::arraySize);
+		if (wasSuccessful != CL_SUCCESS)
+			std::cout << "bufferWrites() : " << wasSuccessful << "\n";
 		computeQueue.finish(); //ensure writes are finished
 
 		//prepare kernel
@@ -78,12 +81,14 @@ namespace compute {
 		//enqueue the kernel for execution
 		cl::NDRange workOffset = cl::NullRange;
 		cl::NDRange globalWorkSize = io::arraySize;
-		cl::NDRange localWorkGroupSize = 64;
+		cl::NDRange localWorkGroupSize = 128;
 
 		std::chrono::steady_clock::time_point beginExecution = std::chrono::high_resolution_clock::now();
-		computeQueue.enqueueNDRangeKernel(kernel, workOffset, globalWorkSize, localWorkGroupSize);
+		wasSuccessful = computeQueue.enqueueNDRangeKernel(kernel, workOffset, globalWorkSize, localWorkGroupSize);
 		//computeQueue.enqueueTask(kernel); //deprecated, simpler version of enqueueNDRangeKernel()
 		//synchronization point for completion of execution, finish();
+		if (wasSuccessful != CL_SUCCESS)
+			std::cout << "enqueueTask() : " << wasSuccessful << "\n";
 		computeQueue.finish();
 		std::chrono::steady_clock::time_point endExecution = std::chrono::high_resolution_clock::now();
 
@@ -91,7 +96,9 @@ namespace compute {
 		double timeTaken = io::getComputeTime(beginExecution, endExecution);
 
 		//read the results from OpenCL device to RAM
-		computeQueue.enqueueReadBuffer(bufC, blockingTrue, offsetNone, io::arraySize * sizeof(cl_int), c);
+		wasSuccessful = computeQueue.enqueueReadBuffer(bufC, blockingTrue, offsetNone, io::arraySize * sizeof(cl_int), c);
+		if (wasSuccessful != CL_SUCCESS)
+			std::cout << "bufferRead() : " << wasSuccessful << "\n";
 		computeQueue.finish(); //ensure read is finished
 
 		return timeTaken;
