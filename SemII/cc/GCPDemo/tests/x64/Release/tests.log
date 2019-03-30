@@ -1,8 +1,0 @@
-﻿  Skipping CUDA source file kernel.cu (excluded from build).
-  devices.c
-f:\mca\semii\cc\gcpdemo\tests\devices.c(25): warning C4018: '<': signed/unsigned mismatch
-f:\mca\semii\cc\gcpdemo\tests\devices.c(33): warning C4018: '<': signed/unsigned mismatch
-  Generating code
-  All 4 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Finished generating code
-  tests.vcxproj -> F:\MCA\SemII\cc\GCPDemo\x64\Release\tests.exe

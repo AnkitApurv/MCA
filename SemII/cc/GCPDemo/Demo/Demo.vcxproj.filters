@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="clDeviceQuery.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="io.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -41,10 +38,5 @@
     <ClInclude Include="gpu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="VectorAdd.cl">
-      <Filter>Source Files</Filter>
-    </None>
   </ItemGroup>
 </Project>
