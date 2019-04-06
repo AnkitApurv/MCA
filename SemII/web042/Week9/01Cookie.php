@@ -6,7 +6,7 @@
 		$lastVisit = $_COOKIE['lastVisit'];
 	}
 	$time = date("H:i:s, l, d/m/Y");
-	$expiry = strtotime("+1 Month");	//86400 equals 24 hours
+	$expiry = strtotime("+1 Month");
 	setcookie("lastVisit", $time, $expiry);
 ?>
 <html>
