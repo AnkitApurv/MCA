@@ -5,6 +5,13 @@
 	<meta lang="en"/>
 	<meta encoding="utf8"/>
 	<title>Test 1</title>
+	<base href="./" target="_self"/>
+	<script type="text/javascript">
+		var btn = document.createElement("BUTTON");   // Create a <button> element
+		btn.innerHTML = "CLICK ME";                   // Insert text
+        //document.body.appendChild(btn);               // Append <button> to <body>
+        document.body.append(btn);
+	</script>
 </head>
 
 <body>
@@ -49,8 +56,8 @@ int main(void)<br/>
 	<dd>perfect amalgamation of timing, capability and vision</dd>
 </dl>
 <a href="https://www.manipal.edu">Manipal</a><br/>
-<a href="./k/test2.html">Test2</a><br/>
-<a href="#kv1">LocalLink</a>
+<a href="k/test2.html">Test2</a><br/>
+<a href="test1.html#kv1">LocalLink</a>
 </font>
 </body>
 

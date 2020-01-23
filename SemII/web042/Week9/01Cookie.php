@@ -11,7 +11,7 @@
 ?>
 <html>
 <head>
-	<meta charst="utf-8"/>
+	<meta charset="utf-8"/>
 	<title>01 Cookie Timestamp</title>
 </head>
 <body>
