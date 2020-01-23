@@ -1,0 +1,4 @@
+D:\asp042\asp042_tests\asp042_tests\01\bin\01.dll
+D:\asp042\asp042_tests\asp042_tests\01\bin\01.pdb
+D:\asp042\asp042_tests\asp042_tests\01\obj\Debug\01.dll
+D:\asp042\asp042_tests\asp042_tests\01\obj\Debug\01.pdb

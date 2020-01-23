@@ -1,0 +1,4 @@
+E:\asp042\WebApp1\bin\WebApp1.dll
+E:\asp042\WebApp1\bin\WebApp1.pdb
+E:\asp042\WebApp1\obj\Debug\WebApp1.dll
+E:\asp042\WebApp1\obj\Debug\WebApp1.pdb

@@ -1,0 +1,12 @@
+E:\asp042\0708\bin\0708.dll
+E:\asp042\0708\bin\0708.pdb
+E:\asp042\0708\obj\Debug\0708.dll
+E:\asp042\0708\obj\Debug\0708.pdb
+D:\asp042\0708\bin\0708.dll
+D:\asp042\0708\bin\0708.pdb
+D:\asp042\0708\obj\Debug\0708.dll
+D:\asp042\0708\obj\Debug\0708.pdb
+F:\ProjectsWorking\asp042\0708\bin\0708.dll
+F:\ProjectsWorking\asp042\0708\bin\0708.pdb
+F:\ProjectsWorking\asp042\0708\obj\Debug\0708.dll
+F:\ProjectsWorking\asp042\0708\obj\Debug\0708.pdb

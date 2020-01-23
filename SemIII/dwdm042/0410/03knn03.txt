@@ -1,0 +1,48 @@
+=== Run information ===
+
+Scheme:weka.classifiers.lazy.IBk -K 3 -W 0 -A "weka.core.neighboursearch.LinearNNSearch -A \"weka.core.EuclideanDistance -R first-last\""
+Relation:     contact-lenses
+Instances:    24
+Attributes:   5
+              age
+              spectacle-prescrip
+              astigmatism
+              tear-prod-rate
+              contact-lenses
+Test mode:10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+IB1 instance-based classifier
+using 3 nearest neighbour(s) for classification
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances          19               79.1667 %
+Incorrectly Classified Instances         5               20.8333 %
+Kappa statistic                          0.6262
+Mean absolute error                      0.2262
+Root mean squared error                  0.3165
+Relative absolute error                 59.8856 %
+Root relative squared error             72.4707 %
+Total Number of Instances               24     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.8       0.053      0.8       0.8       0.8        0.958    soft
+                 0.75      0.1        0.6       0.75      0.667      0.925    hard
+                 0.8       0.222      0.857     0.8       0.828      0.896    none
+Weighted Avg.    0.792     0.167      0.802     0.792     0.795      0.914
+
+=== Confusion Matrix ===
+
+  a  b  c   <-- classified as
+  4  0  1 |  a = soft
+  0  3  1 |  b = hard
+  1  2 12 |  c = none
+

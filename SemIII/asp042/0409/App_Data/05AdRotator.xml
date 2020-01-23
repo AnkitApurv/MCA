@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+    <Ad>
+        <ImageUrl>./Images/a.png</ImageUrl>
+        <NavigateUrl>https:://www.a.org</NavigateUrl>
+        <AlternateText>Visit Website A!</AlternateText>
+        <Keyword>A</Keyword>
+        <Impression>25</Impression>
+    </Ad>
+    <Ad>
+        <ImageUrl>./Images/b.png</ImageUrl>
+        <NavigateUrl>https:://www.b.org</NavigateUrl>
+        <AlternateText>Visit Website B!</AlternateText>
+        <Keyword>B</Keyword>
+        <Impression>25</Impression>
+    </Ad>
+    <Ad>
+        <ImageUrl>./Images/c.png</ImageUrl>
+        <NavigateUrl>https:://www.c.org</NavigateUrl>
+        <AlternateText>Visit Website C!</AlternateText>
+        <Keyword>C</Keyword>
+        <Impression>25</Impression>
+    </Ad>
+    <Ad>
+        <ImageUrl>./Images/d.png</ImageUrl>
+        <NavigateUrl>https:://www.d.org</NavigateUrl>
+        <AlternateText>Visit Website D!</AlternateText>
+        <Keyword>D</Keyword>
+        <Impression>25</Impression>
+    </Ad>
+    <Ad>
+        <ImageUrl>./Images/e.png</ImageUrl>
+        <NavigateUrl>https:://www.e.org</NavigateUrl>
+        <AlternateText>Visit Website E!</AlternateText>
+        <Keyword>E</Keyword>
+        <Impression>25</Impression>
+    </Ad>
+</Advertisements>

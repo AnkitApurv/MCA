@@ -1,0 +1,4 @@
+D:\asp042\0409\bin\0409.dll
+D:\asp042\0409\bin\0409.pdb
+D:\asp042\0409\obj\Debug\0409.dll
+D:\asp042\0409\obj\Debug\0409.pdb

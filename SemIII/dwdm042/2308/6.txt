@@ -1,0 +1,40 @@
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.6 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -A -c 106
+Relation:     supermarket-weka.filters.unsupervised.attribute.Remove-R1-9,11,57,70,79-81,88-89,98,100-102,107-114,116-120,122-130,137-179,189,192-199,201-216
+Instances:    4627
+Attributes:   106
+              [list of attributes omitted]
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.15 (694 instances)
+Minimum metric <confidence>: 0.6
+Number of cycles performed: 17
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 44
+
+Size of set of large itemsets L(2): 136
+
+Size of set of large itemsets L(3): 111
+
+Size of set of large itemsets L(4): 11
+
+Best rules found:
+
+ 1. biscuits=t frozen foods=t tissues-paper prd=t 1072 ==> total=high 742    conf:(0.69)
+ 2. baking needs=t biscuits=t sauces-gravy-pkle=t 1038 ==> total=high 715    conf:(0.69)
+ 3. bread and cake=t sauces-gravy-pkle=t tissues-paper prd=t 1045 ==> total=high 717    conf:(0.69)
+ 4. baking needs=t biscuits=t tissues-paper prd=t 1077 ==> total=high 732    conf:(0.68)
+ 5. baking needs=t sauces-gravy-pkle=t frozen foods=t 1089 ==> total=high 740    conf:(0.68)
+ 6. biscuits=t sauces-gravy-pkle=t frozen foods=t 1077 ==> total=high 731    conf:(0.68)
+ 7. baking needs=t frozen foods=t tissues-paper prd=t 1118 ==> total=high 754    conf:(0.67)
+ 8. biscuits=t tissues-paper prd=t vegetables=t 1041 ==> total=high 702    conf:(0.67)
+ 9. bread and cake=t baking needs=t biscuits=t frozen foods=t 1113 ==> total=high 742    conf:(0.67)
+10. bread and cake=t sauces-gravy-pkle=t party snack foods=t 1062 ==> total=high 708    conf:(0.67)
+

@@ -1,0 +1,46 @@
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 5 -T 0 -C 0.89 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -A -c 12
+Relation:     bank-data-weka.filters.unsupervised.attribute.NumericToNominal-Rfirst-last
+Instances:    600
+Attributes:   12
+              id
+              age
+              sex
+              region
+              income
+              married
+              children
+              car
+              save_act
+              current_act
+              mortgage
+              pep
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.1 (60 instances)
+Minimum metric <confidence>: 0.89
+Number of cycles performed: 18
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 32
+
+Size of set of large itemsets L(2): 104
+
+Size of set of large itemsets L(3): 87
+
+Size of set of large itemsets L(4): 19
+
+Best rules found:
+
+1. married=YES children=0 save_act=YES current_act=YES 87 ==> pep=NO 80    conf:(0.92)
+2. married=YES children=0 save_act=YES mortgage=NO 80 ==> pep=NO 73    conf:(0.91)
+3. married=YES children=0 current_act=YES mortgage=NO 88 ==> pep=NO 80    conf:(0.91)
+4. sex=FEMALE married=YES children=0 mortgage=NO 70 ==> pep=NO 63    conf:(0.9)
+5. married=YES children=0 save_act=YES 119 ==> pep=NO 107    conf:(0.9)
+

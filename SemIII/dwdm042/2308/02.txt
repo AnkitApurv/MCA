@@ -1,0 +1,42 @@
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.9 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -A -c 3
+Relation:     Book-weka.filters.unsupervised.attribute.NumericToNominal-Rfirst-last
+Instances:    200
+Attributes:   11
+              ChildBks
+              YouthBks
+              CookBks
+              DoItYBks
+              RefBks
+              ArtBks
+              GeogBks
+              ItalCook
+              ItalAtlas
+              ItalArt
+              Florence
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.1 (20 instances)
+Minimum metric <confidence>: 0.9
+Number of cycles performed: 18
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 6
+
+Size of set of large itemsets L(2): 14
+
+Size of set of large itemsets L(3): 4
+
+Best rules found:
+
+ 1. ChildBks=1 DoItYBks=1 ArtBks=1 26 ==> CookBks=1 24    conf:(0.92)
+ 2. YouthBks=1 ArtBks=1 22 ==> CookBks=1 20    conf:(0.91)
+ 3. DoItYBks=1 ArtBks=1 30 ==> CookBks=1 27    conf:(0.9)
+ 4. DoItYBks=1 GeogBks=1 30 ==> CookBks=1 27    conf:(0.9)
+
