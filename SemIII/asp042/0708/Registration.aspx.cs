@@ -19,31 +19,37 @@ namespace _0708
             TextBox7.Text = c1.SelectedDate.Date.ToShortDateString();
         }
 
+        protected void validateImageType(object sender, ServerValidateEventArgs e) {
+            HttpPostedFile photo = PhotoUpload.PostedFile;
+            if (photo.ContentType != "image/jpeg" || photo.ContentType != "image/jpg" || photo.ContentType != "image/gif")
+                e.IsValid = false;
+            else
+                e.IsValid = true;
+            return;
+        }
+
+        protected void validateImageSize(object sender, ServerValidateEventArgs e) {
+            HttpPostedFile photo = PhotoUpload.PostedFile;
+            int maxFileSize = 100 * 1000;
+            if (photo.ContentLength > maxFileSize)
+                e.IsValid = false;
+            else
+                e.IsValid = true;
+            return;
+        }
+
+        protected void validateResumeType(object sender, ServerValidateEventArgs e) {
+            HttpPostedFile resume = ResumeUpload.PostedFile;
+            if (resume.ContentType != "application/pdf")
+                e.IsValid = false;
+            else
+                e.IsValid = true;
+            return;
+        }
+
         protected void Button1_Click(object sender, EventArgs e)
         {
-            HttpPostedFile photo = PhotoUpload.PostedFile;
-            HttpPostedFile resume = ResumeUpload.PostedFile;
-            int maxFileSize = 100 * 1000;
-            bool areUploadsValid = true;
-            if (photo.ContentType != "image/jpeg" || photo.ContentType != "image/jpg" || photo.ContentType != "image/gif")
-            {
-                areUploadsValid = false;
-                PhotoUploadErrors.Text = "File provided for photo is not an image.";
-            }
-            if (photo.ContentLength > maxFileSize)
-            {
-                areUploadsValid = false;
-                PhotoUploadErrors.Text += "Photo is larger than 100KB.";
-            }
-            if (resume.ContentType != "application/pdf")
-            {
-                areUploadsValid = false;
-                ResumeUploadErrors.Text = "File provided for resume is not a pdf.";
-            }
-            if (areUploadsValid)
-            {
-                Response.Redirect("HiringPolicies.aspx", true);
-            }
+            Response.Redirect("HiringPolicies.aspx", true);
             return;
         }
     }

@@ -145,7 +145,10 @@
             <td>
                 <asp:FileUpload ID="PhotoUpload" runat="server" />
             </td>
-            <td><asp:Label ID="PhotoUploadErrors" runat="server" AssociatedControlID="PhotoUpload"></asp:Label></td>
+            <td><asp:CustomValidator ID="PhotoTypeValidator" runat="server" ControlToValidate="PhotoUpload" OnServerValidate="validateImageType" ErrorMessage="File provided for photograph is not an image."></asp:CustomValidator>
+                <br />
+                <asp:CustomValidator ID="PhotoSizeValidator" runat="server" ControlToValidate="PhotoUpload" OnServerValidate="validateImageSize" ErrorMessage="Photograph provided is larger than 100KB."></asp:CustomValidator>
+            </td>
         </tr>
         <tr>
             <td>
@@ -154,7 +157,7 @@
             <td>
                 <asp:FileUpload ID="ResumeUpload" runat="server" />
             </td>
-            <td><asp:Label ID="ResumeUploadErrors" runat="server" AssociatedControlID="ResumeUpload"></asp:Label></td>
+            <td><asp:CustomValidator ID="ResumeTypeValidator" runat="server" ControlToValidate="ResumeUpload" OnServerValidate="validateResumeType" ErrorMessage="File provided for resume is not a pdf."></asp:CustomValidator></td>
         </tr>
         <tr>
             <td>

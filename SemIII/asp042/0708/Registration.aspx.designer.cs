@@ -211,13 +211,22 @@ namespace _0708 {
         protected global::System.Web.UI.WebControls.FileUpload PhotoUpload;
         
         /// <summary>
-        /// PhotoUploadErrors control.
+        /// PhotoTypeValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PhotoUploadErrors;
+        protected global::System.Web.UI.WebControls.CustomValidator PhotoTypeValidator;
+        
+        /// <summary>
+        /// PhotoSizeValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator PhotoSizeValidator;
         
         /// <summary>
         /// ResumeUpload control.
@@ -229,13 +238,13 @@ namespace _0708 {
         protected global::System.Web.UI.WebControls.FileUpload ResumeUpload;
         
         /// <summary>
-        /// ResumeUploadErrors control.
+        /// ResumeTypeValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ResumeUploadErrors;
+        protected global::System.Web.UI.WebControls.CustomValidator ResumeTypeValidator;
         
         /// <summary>
         /// Button1 control.

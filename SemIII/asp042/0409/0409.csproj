@@ -58,7 +58,9 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="App_Data\05AdRotator.xml" />
+    <Content Include="App_Data\05AdRotator.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\placements.mdf" />
     <Content Include="App_Data\placements_log.ldf">
       <DependentUpon>placements.mdf</DependentUpon>

@@ -2,3 +2,7 @@ D:\asp042\L11\bin\L11.dll
 D:\asp042\L11\bin\L11.pdb
 D:\asp042\L11\obj\Debug\L11.dll
 D:\asp042\L11\obj\Debug\L11.pdb
+F:\ProjectsWorking\asp042\L11\bin\L11.dll
+F:\ProjectsWorking\asp042\L11\bin\L11.pdb
+F:\ProjectsWorking\asp042\L11\obj\Debug\L11.dll
+F:\ProjectsWorking\asp042\L11\obj\Debug\L11.pdb

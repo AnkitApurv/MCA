@@ -2,3 +2,7 @@ D:\asp042\1809\bin\1809.dll
 D:\asp042\1809\bin\1809.pdb
 D:\asp042\1809\obj\Debug\1809.dll
 D:\asp042\1809\obj\Debug\1809.pdb
+F:\ProjectsWorking\asp042\1809\bin\1809.dll
+F:\ProjectsWorking\asp042\1809\bin\1809.pdb
+F:\ProjectsWorking\asp042\1809\obj\Debug\1809.dll
+F:\ProjectsWorking\asp042\1809\obj\Debug\1809.pdb

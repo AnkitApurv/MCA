@@ -24,14 +24,16 @@ namespace _1809
             if (FileUpload1.HasFile) {
                 HttpPostedFile f = FileUpload1.PostedFile;
                 string extension = System.IO.Path.GetExtension(f.FileName);
-                if (extension != ".png" || extension != ".jpg") { return; }
-                string savePath = "./Pics/" + f.FileName;
-                f.SaveAs(savePath);
-                
-                cmd.Parameters.AddWithValue("@path", savePath);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
+                if (extension.Equals(".png") || extension.Equals(".jpg"))
+                {
+                    string savePath = "F:/ProjectsWorking/asp042/1809/Pics/" + f.FileName;
+                    f.SaveAs(savePath);
+
+                    cmd.Parameters.AddWithValue("@path", savePath);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                }
             }
         }
     }

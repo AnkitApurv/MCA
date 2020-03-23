@@ -1,0 +1,4 @@
+F:\ProjectsWorking\asp042\L11Ex1\bin\L11Ex1.dll
+F:\ProjectsWorking\asp042\L11Ex1\bin\L11Ex1.pdb
+F:\ProjectsWorking\asp042\L11Ex1\obj\Debug\L11Ex1.dll
+F:\ProjectsWorking\asp042\L11Ex1\obj\Debug\L11Ex1.pdb

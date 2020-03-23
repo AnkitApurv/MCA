@@ -2,3 +2,7 @@ F:\Lab\ASP .NET\180970010\L9-10\L9-10\bin\L9-10.dll
 F:\Lab\ASP .NET\180970010\L9-10\L9-10\bin\L9-10.pdb
 F:\Lab\ASP .NET\180970010\L9-10\L9-10\obj\Debug\L9-10.dll
 F:\Lab\ASP .NET\180970010\L9-10\L9-10\obj\Debug\L9-10.pdb
+F:\ProjectsWorking\asp042\L9-10\bin\L9-10.dll
+F:\ProjectsWorking\asp042\L9-10\bin\L9-10.pdb
+F:\ProjectsWorking\asp042\L9-10\obj\Debug\L9-10.dll
+F:\ProjectsWorking\asp042\L9-10\obj\Debug\L9-10.pdb
